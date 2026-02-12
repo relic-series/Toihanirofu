@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>x</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #aaa;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100dvh;
+      flex-direction: column;
+    }
+
+    input {
+      background-color: #111;
+      border: 1px solid #444;
+      color: #ccc;
+      padding: 4px 8px;
+      font-family: inherit;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    button {
+      background-color: #222;
+      color: #ccc;
+      border: 1px solid #444;
+      font-size: 12px;
+      padding: 4px 12px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    #log {
+      margin-top: 40px;
+      white-space: pre-wrap;
+      text-align: left;
+      max-width: 600px;
+      display: none;
+    }
+
+    .counter {
+      font-size: 10px;
+      margin-top: 40px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+<div id="login">
+  <div>log access terminal [x]</div>
+  <div>enter access key:</div>
+  <input type="pasword" id="keyInput" />
+  <br>
+  <button onclick="checkKey()">submit</button>
+  <div class="counter" id="counter">visitor no. 00000</div>
+</div>
+
+<div id="log">
+2026/02/09  
+眠剤で意識が飛んで戻ってきた時、音が消えてた。誰が止めたんだろう。
+
+2026/02/05  
+つら。  
+冷たい白い壁。きのうもおとといも、おなじ。
+
+unknown  
+思い出しちゃいけないものって、  
+何回思い出したらいけないのかな。
+</div>
+
+<script>
+  // visitor no. 表示（100〜9999の範囲でランダム）
+  const rand = Math.floor(100 + Math.random() * 9900);
+  document.getElementById('counter').textContent = `visitor no. ${String(rand).padStart(5, '0')}`;
+
+  // 鍵チェック（好きなパスワードに変えてね）
+  function checkKey() {
+    const input = document.getElementById('keyInput').value;
+    if (input === 'hollow.undx') {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('log').style.display = 'block';
+    } else {
+      alert("access denied.");
+    }
+  }
+</script>
+
+</body>
+</html>
